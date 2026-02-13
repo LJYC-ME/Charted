@@ -154,7 +154,11 @@ namespace charted
         template <concepts::Route TRoute>
         static bool IsRouteValid(const TRoute& routeValue)
         {
-            if constexpr (requires { { routeValue.IsValid() } -> std::convertible_to<bool>; })
+            if constexpr (concepts::IsStaticRoute<std::remove_cvref_t<TRoute>>::value)
+            {
+                return std::remove_cvref_t<TRoute>::Valid;
+            }
+            else if constexpr (requires { { routeValue.IsValid() } -> std::convertible_to<bool>; })
             {
                 return static_cast<bool>(routeValue.IsValid());
             }

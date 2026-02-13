@@ -9,8 +9,9 @@ int main()
 {
     std::cout << "=== Quick Start ===\n";
 
-    auto dynamic_route = charted::route("A.B[2].C");
+    const auto  dynamic_route = charted::route("A.B[2].C");
     const auto& static_route = charted::route<"A.B[2].C">();
+    static_assert(charted::route<"A.B[2].C">().GetTokenCount() == 4);
 
     std::cout << "Dynamic path: " << dynamic_route.GetPathString() << '\n';
     std::cout << "Dynamic tokens: " << dynamic_route.GetTokenCount() << '\n';

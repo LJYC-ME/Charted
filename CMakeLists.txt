@@ -6,7 +6,7 @@ project(charted
     HOMEPAGE_URL "charted.ljyc.me"
 )
 
-option(CHARTED_BUILD_EXAMPLES "Build examples"              OFF)
+option(CHARTED_BUILD_EXAMPLES "Build examples"              ON)
 option(CHARTED_ENABLE_MODULES "Build C++20 module bindings" OFF)
 
 add_library(charted INTERFACE)

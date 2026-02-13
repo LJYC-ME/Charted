@@ -375,7 +375,7 @@ namespace charted
     private:
         void Parse() { Valid = detail::ParseDynamicRoute(Path, Tokens); }
 
-        static constexpr std::size_t InlineBufferSize = 256;
+        static constexpr std::size_t InlineBufferSize = 4 * sizeof(RouteToken);
         std::array<std::byte, InlineBufferSize> InlineBuffer{};
         std::pmr::monotonic_buffer_resource     Resource;
         std::pmr::string                        Path;
@@ -390,6 +390,8 @@ namespace charted
         static_assert(MaxTokens > 0, "MaxTokens must be greater than 0.");
         static constexpr auto Parsed = detail::ParseStaticRoute<Path, MaxTokens>();
         static_assert(Parsed.Valid, "Invalid route literal.");
+        static constexpr std::size_t TokenCount = Parsed.Count;
+        static constexpr bool        Valid      = Parsed.Valid;
 
         [[nodiscard]] static constexpr std::string_view GetPathString() noexcept
         {
@@ -401,8 +403,8 @@ namespace charted
             return std::span<const RouteToken>(Parsed.Tokens.data(), Parsed.Count);
         }
 
-        [[nodiscard]] static consteval std::size_t GetTokenCount() noexcept { return Parsed.Count; }
-        [[nodiscard]] static consteval bool IsValid() noexcept { return Parsed.Valid; }
+        [[nodiscard]] constexpr std::size_t GetTokenCount() const noexcept { return TokenCount; }
+        [[nodiscard]] constexpr bool IsValid() const noexcept { return Valid; }
     };
 
     namespace concepts
