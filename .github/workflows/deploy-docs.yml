@@ -29,7 +29,12 @@ jobs:
         run: pip install -r documents/requirements.txt
 
       - name: Build docs
-        run: mkdocs build -f documents/mkdocs.yml -d documents/site
+        run: mkdocs build -f documents/mkdocs.yml --site-dir site
+
+      - name: Verify built site
+        run: |
+          test -f documents/site/index.html
+          ls -la documents/site
 
       - name: Deploy to GitHub-Page branch
         uses: peaceiris/actions-gh-pages@v4
@@ -37,3 +42,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: GitHub-Page
           publish_dir: documents/site
+          cname: charted.ljyc.me
