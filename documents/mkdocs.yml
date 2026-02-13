@@ -30,6 +30,7 @@ theme:
 
 nav:
   - Overview: index.md
+  - Integration: Integration/index.md
   - Route: Route/index.md
   - Json: Json/index.md
   - Benchmark: Benchmark/index.md

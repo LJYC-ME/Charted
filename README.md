@@ -91,15 +91,40 @@ auto try_v = json.TryGet<int>(charted::route("A.B[1].Missing"));
 
 ## Build with CMake
 
+Charted currently does **not** provide `find_package(charted)` config files yet.
+Use one of the following integration methods.
+
+### Option 1: `add_subdirectory`
+
 ```cmake
-find_package(charted CONFIG REQUIRED)
+add_subdirectory(path/to/Charted)
+target_link_libraries(your_target PRIVATE charted::charted)
+```
+
+### Option 2: `FetchContent`
+
+```cmake
+include(FetchContent)
+
+FetchContent_Declare(
+  charted
+  GIT_REPOSITORY https://github.com/LJYC-ME/Charted.git
+  GIT_TAG main
+)
+FetchContent_MakeAvailable(charted)
+
 target_link_libraries(your_target PRIVATE charted::charted)
 ```
 
 Project options:
 
-- `CHARTED_BUILD_EXAMPLES` (default: `ON`)
+- `CHARTED_BUILD_EXAMPLES` (default: `OFF`)
 - `CHARTED_ENABLE_MODULES` (default: `OFF`, requires CMake >= 3.28)
+
+> **Mode reminder**
+> - By default, Charted is used as a **header-only** library.
+> - Turn `CHARTED_ENABLE_MODULES=ON` to build and use the **C++20 module bindings**.
+> - In both modes, the public CMake target name is still `charted::charted`.
 
 When modules are enabled, the public link target is still `charted::charted`.
 
@@ -114,7 +139,11 @@ When modules are enabled, the public link target is still `charted::charted`.
 
 ## Documentation
 
-Full docs are under `documents/` with these sections:
+Official documentation:
+
+- https://charted.ljyc.me
+
+Local docs source is under `documents/` with these sections:
 
 - `Overview`
 - `Route`
