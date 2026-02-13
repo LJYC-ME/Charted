@@ -1,13 +1,14 @@
 # Route
 
-Route tokens support:
+Route expressions support:
 
 - Key segments: `A.B.C`
 - Array indices: `A.B[2].C`
 
 ## Dynamic Route
 
-Dynamic route is runtime-driven. Use it when the route comes from config, CLI, file, or user input.
+Dynamic route is runtime-driven.
+Use it when the route comes from config, CLI, files, or user input.
 
 ```cpp
 auto route = charted::route("A.B[2].C");
@@ -19,7 +20,8 @@ if (route.IsValid())
 
 ## Static Route
 
-Static route is compile-time literal driven. Use it when the route is fixed in code.
+Static route is compile-time literal-driven.
+Use it when the route is fixed in code.
 
 ```cpp
 auto route = charted::route<"A.B[2].C">();

@@ -1,11 +1,13 @@
 # Overview
 
-Charted is a C++ route and JSON adapter library with two integration styles:
+![Charted Title](assets/Title-Charted.png)
+
+## Integration Styles
 
 - Header include style (`#include <charted/...>`)
 - C++20 module style (`import charted; import charted.json;`)
 
-Both styles use the same public namespace and API (`charted::route`, `charted::Json`).
+Both styles share the same public API (`charted::route`, `charted::Json`).
 
 ## Header Include Example
 
@@ -39,4 +41,4 @@ int value = json.Get<int>(static_route, -1);
 
 - `CHARTED_ENABLE_MODULES=OFF` (default): header include style only.
 - `CHARTED_ENABLE_MODULES=ON`: builds module bindings (`charted`, `charted.json`) on supported toolchains.
-- `CHARTED_BUILD_EXAMPLES=ON`: builds runtime example targets.
+- `CHARTED_BUILD_EXAMPLES=ON`: builds example targets.

@@ -1,5 +1,7 @@
 # Json
 
+`charted::Json` is an adapter over `nlohmann::json`.
+
 ## Basic Set/Get
 
 ```cpp

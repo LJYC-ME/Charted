@@ -5,6 +5,8 @@ repo_name: Charted
 theme:
   name: material
   language: en
+  logo: assets/Logo-Charted.png
+  favicon: assets/Logo-Charted.png
   palette:
     - scheme: default
       primary: blue grey

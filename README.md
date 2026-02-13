@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="documents/docs/assets/Title-Charted.png" alt="Charted Titlebar" />
+</p>
+
 # Charted
 
 Charted is a lightweight C++ route language + JSON adapter library.

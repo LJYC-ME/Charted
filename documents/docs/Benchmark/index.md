@@ -1,6 +1,6 @@
 # Benchmark
 
-This page records one Release build benchmark run from `examples/overview.cpp`.
+This page records one Release benchmark snapshot from `examples/overview.cpp`.
 
 ## Raw Results (Release)
 
@@ -31,6 +31,11 @@ Native nlohmann chained     : 122.30 ns/op (x0.93)
 - In this run, static route is near dynamic on flat keys, and slightly slower on deeper paths.
 - The main value of static route is compile-time validation of route literals.
 - Dynamic route still has good ergonomics for runtime-provided paths.
+
+## Reading the Numbers
+
+- Treat this as a single-machine snapshot, not an absolute ranking.
+- Focus on ratio (`x...`) more than raw ns/op when comparing environments.
 
 ## Compile-Time Validation Value
 
